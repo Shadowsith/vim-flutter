@@ -12,6 +12,17 @@ if !exists('g:flutter_hot_reload_on_save')
   let g:flutter_hot_reload_on_save=1
 endif
 
+if !exists('g:flutter_hot_restart_on_save')
+  let g:flutter_hot_restart_on_save=0
+endif
+
+if !exists('g:flutter_show_log_on_run')
+  let g:flutter_show_log_on_run=1
+elseif &hidden == 0 && g:flutter_show_log_on_run == 0
+  echoerr "WARNING: Hidden buffers are disabled. Setting g:flutter_show_log_on_run to 1. Please add `set hidden` to your vimrc to keep the flutter log in the background."
+  let g:flutter_show_log_on_run = 1
+endif
+
 command! FlutterDevices call flutter#devices()
 command! FlutterEmulators call flutter#emulators()
 command! -nargs=1 FlutterEmulatorsLaunch call flutter#emulators_launch(<f-args>)
@@ -30,7 +41,11 @@ command! FlutterInstall call flutter#install()
 command! FlutterFormat call flutter#format()
 
 if g:flutter_hot_reload_on_save
-  autocmd FileType dart autocmd BufWritePost <buffer> call flutter#hot_reload_quiet()
+  autocmd! BufWritePost *.dart call flutter#hot_reload_quiet()
+endif
+
+if g:flutter_hot_restart_on_save
+  autocmd! BufWritePost *.dart call flutter#hot_restart_quiet()
 endif
 
 command! FlutterSplit :split __Flutter_Output__

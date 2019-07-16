@@ -36,6 +36,10 @@ Ultimately, installation is up to you.
 * `g:flutter_command` - The Flutter executable path/name; defaults to `'flutter'`.
 * `g:flutter_hot_reload_on_save` - Whether to auto hot-reload when `dart` files
 are saved; defaults to `1`.
+* `g:flutter_hot_restart_on_save` - Whether to auto hot-restart when `dart` files
+are saved; defaults to `0`.
+* `g:flutter_show_log_on_run` - Automatically open `__Flutter_Output__` when starting
+flutter; defaults to `1`. Setting this to 0 requires `set hidden` in your vimrc.
 
 ## Provided Commands
 * `:FlutterRun <args>` - calls `flutter run <args>`
@@ -44,6 +48,7 @@ are saved; defaults to `1`.
 * `:FlutterQuit` - quits the current Flutter process
 * `:FlutterDevices` - opens a new buffer, and writes the output of `flutter devices` to it
 * `:FlutterSplit` - opens Flutter output in a horizontal split
+<<<<<<< HEAD
 * `:FlutterAnalyze` - analyzes flutter project
 * `:FlutterClean` - cleans project from build files
 * `:FlutterDoctor` checks project dependencies, connected devices etc
@@ -53,6 +58,12 @@ are saved; defaults to `1`.
 * `:FlutterLogs` - shows debug logs of connected devices
 * `:FlutterInstall` - installs files on connected device
 * `:FlutterFormat` - formatting current Dart file
+=======
+* `:FlutterEmulators` - Executes a `flutter emulators` process.
+* `:FlutterEmulatorsLaunch` - Executes a `flutter emulators --launch` process, with any provided
+arguments.
+* `:FlutterVisualDebug` - Toggles visual debugging in the running Flutter process.
+>>>>>>> 7f12c91b9f3789ab3559eeed9ed8905afcca6dfb
 
 The following are self-explanatory:
 * `:FlutterVSplit`
